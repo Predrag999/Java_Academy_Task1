@@ -30,10 +30,10 @@ public class Battle {
             boolean army1HasNext = army1.troops.size() > 1;
             boolean army2HasNext = army2.troops.size() > 1;
             if(army1.troops.get(index) instanceof Lancer && army2HasNext){
-                army2.troops.get(it1.hasPrevious() ? it1.previousIndex(): 0).hittedFromLancer(secontUnitHealth - army2.troops.get(index).getHealth());
+                army2.troops.get(it1.hasPrevious() ? it1.previousIndex(): it1.nextIndex()).hittedFromLancer(secontUnitHealth - army2.troops.get(index).getHealth());
                 index++;
             } else if(army2.troops.get(index) instanceof Lancer && army1HasNext){
-                army1.troops.get(it.hasPrevious() ? it.previousIndex(): 0).hittedFromLancer(firstUnitHealth - army1.troops.get(index).getHealth());
+                army1.troops.get(it.hasPrevious() ? it.previousIndex(): it.nextIndex()).hittedFromLancer(firstUnitHealth - army1.troops.get(index).getHealth());
                 index++;
             }
             if(army1.troops.get(index).isAlive()){
