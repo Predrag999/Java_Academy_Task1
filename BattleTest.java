@@ -392,14 +392,14 @@ class BattleTest {
         var army_1 = new Army();
         var army_2 = new Army();
 
-        army_1.addUnits("Vampire", 1);
-        army_1.addUnits("Vampire", 2);
+        army_1.addUnits("Lancer", 5);
         army_1.addUnits("Vampire", 3);
-        army_1.addUnits("Vampire", 4);
-        army_2.addUnits("Vampire", 1);
-        army_2.addUnits("Vampire", 2);
-        army_2.addUnits("Vampire", 3);
-        army_2.addUnits("Vampire", 4);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Defender", 2);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Vampire", 6);
+        army_2.addUnits("Lancer", 5);
 
 
         var result = Battle.fight(army_1,army_2);
@@ -440,6 +440,168 @@ class BattleTest {
 
         var result = Battle.fight(army_1,army_2);
         assertTrue(result);
+    }
+    @Test
+    @DisplayName("18. Battle")
+    void test29(){
+        var army_1 = new Army();
+        var army_2 = new Army();
+
+        army_1.addUnits("Lancer", 7);
+        army_1.addUnits("Vampire", 3);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Defender", 2);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Healer", 1);
+        army_2.addUnits("Vampire", 6);
+        army_2.addUnits("Lancer", 4);
+
+        var result = Battle.fight(army_1,army_2);
+        assertTrue(result);
+    }
+    @Test
+    @DisplayName("19. Battle")
+    void test30(){
+        var chuck = new Lancer();
+        var noris = new Warrior();
+        var stephan = new Knight();
+
+       var result = Battle.fight(chuck,noris);
+       assertTrue(result);
+       int test = noris.getHealth();
+       assertEquals(-4,test);
+       result = Battle.fight(chuck,stephan);
+       assertFalse(result);
+
+    }
+    @Test
+    @DisplayName("20. Battle")
+    void test31(){
+        var army_1 = new Army();
+        var army_2 = new Army();
+
+        army_1.addUnits("Lancer", 7);
+        army_1.addUnits("Vampire", 3);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Defender", 2);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Healer", 1);
+        army_2.addUnits("Vampire", 6);
+        army_2.addUnits("Lancer", 4);
+
+        var result = Battle.fight(army_1,army_2);
+
+        assertTrue(result);
+    }
+
+    @Test
+    @DisplayName("21. Battle")
+    void test32(){
+        var army_1 = new Army();
+        var army_2 = new Army();
+
+        army_1.addUnits("Lancer", 1);
+        army_1.addUnits("Warrior", 3);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Knight", 2);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Healer", 1);
+        army_2.addUnits("Vampire", 6);
+        army_2.addUnits("Lancer", 4);
+
+        var result = Battle.fight(army_1,army_2);
+
+        assertFalse(result);
+    }
+    @Test
+    @DisplayName("22. Battle")
+    void test33(){
+        var army_1 = new Army();
+        var army_2 = new Army();
+
+        army_1.addUnits("Lancer", 4);
+        army_1.addUnits("Warrior", 3);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Knight", 2);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Healer", 1);
+        army_2.addUnits("Vampire", 2);
+        army_2.addUnits("Lancer", 4);
+
+        var test = Battle.straightFight(army_1,army_2);
+        assertTrue(test);
+
+    }
+    @Test
+    @DisplayName("23. Battle")
+    void test34(){
+        var army_1 = new Army();
+        var army_2 = new Army();
+
+        army_1.addUnits("Lancer", 5);
+        army_1.addUnits("Vampire", 3);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Defender", 2);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Vampire", 6);
+        army_2.addUnits("Lancer", 5);
+
+        var test = Battle.straightFight(army_1,army_2);
+        assertFalse(test);
+
+    }
+    @Test
+    @DisplayName("24. Battle")
+    void test35(){
+        var army_1 = new Army();
+        var army_2 = new Army();
+
+        army_1.addUnits("Lancer", 7);
+        army_1.addUnits("Vampire", 3);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Defender", 2);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Vampire", 6);
+        army_2.addUnits("Lancer", 4);
+
+        var test = Battle.straightFight(army_1,army_2);
+        assertTrue(test);
+
+    }
+    @Test
+    @DisplayName("25. Battle")
+    void test36(){
+        var army_1 = new Army();
+        var army_2 = new Army();
+
+        army_1.addUnits("Lancer", 7);
+        army_1.addUnits("Vampire", 3);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Warrior", 4);
+        army_1.addUnits("Healer", 1);
+        army_1.addUnits("Defender", 4);
+        army_2.addUnits("Warrior", 4);
+        army_2.addUnits("Defender", 4);
+        army_2.addUnits("Healer", 1);
+        army_2.addUnits("Vampire", 6);
+        army_2.addUnits("Lancer", 4);
+
+        var test = Battle.straightFight(army_1,army_2);
+        assertFalse(test);
     }
 
 }
