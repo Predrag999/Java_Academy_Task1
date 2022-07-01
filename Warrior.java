@@ -1,13 +1,16 @@
 package org.example;
 
+import java.awt.*;
+
 public class Warrior implements canAttack{
-    private static final int ATTACK = 5;
+    private int ATTACK;
     private int health;
     public Warrior(){
-        this(50);
+        this(50,5);
     }
-    public Warrior(int initialHealth){
+    public Warrior(int initialHealth,int initialAttack){
         this.health = initialHealth;
+        this.ATTACK = initialAttack;
     }
 
     public int getHealth(){
@@ -23,8 +26,10 @@ public class Warrior implements canAttack{
         defender.hittedBy(this);
     }
 
-    protected void hittedBy(canAttack attacker) {
-        setHealth(getHealth() - attacker.getAttack());
+    protected int hittedBy(canAttack attacker) {
+//        setHealth(getHealth() - attacker.getAttack());
+        this.health -= attacker.getAttack();
+        return attacker.getAttack();
     }
 
     protected void setHealth(int health) {
@@ -33,6 +38,10 @@ public class Warrior implements canAttack{
 
     protected int hittedFromLancer(int damage){
         return this.health -= (damage / 2);
+    }
+
+    protected int maxHealth(){
+        return  health = Math.min(health,maxHealth());
     }
 
 }
